@@ -1,14 +1,24 @@
 package edu.eci.arsw.api.primesrepo.model;
 
+import java.io.Serializable;
+
 /**
  * @author Santiago Carrillo
  * 2/22/18.
  */
-public class FoundPrime
+public class FoundPrime implements Serializable
 {
-    String user;
 
-    String prime;
+    
+    
+    private String user;
+
+    private String prime;
+    
+    public FoundPrime(String user, String prime) {
+        this.user = user;
+        this.prime = prime;
+    }
 
     public FoundPrime()
     {

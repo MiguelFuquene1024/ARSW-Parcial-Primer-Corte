@@ -26,6 +26,7 @@ public class PrimeServiceStub implements PrimeService
     @Override
     public void addFoundPrime( FoundPrime foundPrime )
     {
+        
         primes.add(foundPrime);
     }
 
@@ -38,6 +39,11 @@ public class PrimeServiceStub implements PrimeService
     @Override
     public FoundPrime getPrime( String primee )
     {
-        return primes.stream().filter(prime->prime.getPrime()==primee).findFirst().get();
+        for(FoundPrime f:primes){
+            if(f.getPrime().equals(primee)){
+                return f;
+            }
+        }
+        return null;
     }
 }

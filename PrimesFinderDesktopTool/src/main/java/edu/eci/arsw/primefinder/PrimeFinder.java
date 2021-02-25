@@ -10,7 +10,7 @@ public class PrimeFinder{
 	
 	
         
-	public static void findPrimes(BigInteger _a, BigInteger _b, PrimesResultSet prs,int N){
+	public  void findPrimes(BigInteger _a, BigInteger _b, PrimesResultSet prs,int N){
             
                 BigInteger a=_a;
                 BigInteger b=_b;
@@ -24,7 +24,7 @@ public class PrimeFinder{
                 
 	}
         
-	private void crearThreads(int N, PrimesResultSet prs){
+	public void crearThreads(int N, PrimesResultSet prs){
             amountOfFilesTotal = resultFiles.size();
             for(int i=0;i<N;i++){
                 if(amountOfFilesTotal % N != 0){

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ import org.springframework.http.ResponseEntity;
 public class PrimesController
 {
     @Autowired
-    PrimeServiceStub primeService;
+    PrimeService primeService;
 
     @RequestMapping( value = "/primes", method = GET )
     public ResponseEntity getPrimes()
@@ -34,19 +34,23 @@ public class PrimesController
         
     }
     @RequestMapping( value = "/primes", method = POST )
-    public ResponseEntity addFoundPrime( FoundPrime foundPrime )
+    public ResponseEntity addFoundPrime(@RequestBody FoundPrime foundPrime )
     {
         try{
-            
+            primeService.addFoundPrime(foundPrime);
+            return new ResponseEntity<>("Registro con exito el prime" ,HttpStatus.ACCEPTED);
+        }catch(Exception ex){
+            return new ResponseEntity<>("Error al insertar el dato",HttpStatus.NOT_FOUND);
         }
-        primeService.addFoundPrime(foundPrime);
-        return null;
     }
-    @RequestMapping( value = "/primes", method = GET )
-    public FoundPrime getPrime( String prime )    
+    @RequestMapping( value = "/primes/{primenumber}", method = GET )
+    public ResponseEntity getPrime( String prime )    
     {
-        
-        return primeService.getPrime(prime);
+        try {
+            return new ResponseEntity<>(primeService.getPrime(prime) ,HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            return new ResponseEntity<>("Error al encontrar el primo",HttpStatus.NOT_FOUND);
+        }
     }
 
 
