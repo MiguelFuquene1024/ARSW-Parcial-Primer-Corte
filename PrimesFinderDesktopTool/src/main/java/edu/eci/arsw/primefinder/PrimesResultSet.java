@@ -74,7 +74,9 @@ public class PrimesResultSet {
         return primes;
     }    
 
-    
+    public int size(){
+        return primes.size();
+    }
     
     
 }

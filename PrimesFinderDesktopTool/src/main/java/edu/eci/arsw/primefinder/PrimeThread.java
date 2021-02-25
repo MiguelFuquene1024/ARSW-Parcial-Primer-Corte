@@ -17,7 +17,7 @@ public class PrimeThread extends Thread {
     private BigInteger b;
     private PrimesResultSet prs;
     private MathUtilities mt;
-    public PrimeThread(BigInteger a, BigInteger b, PrimesResultSet prs,MathUtilities mt) {
+    public PrimeThread(Integer a, Integer b, PrimesResultSet prs,MathUtilities mt) {
         this.a=a;
         this.b=b;
         this.prs=prs;

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,7 @@ public class PrimesController
         }
     }
     @RequestMapping( value = "/primes/{primenumber}", method = GET )
-    public ResponseEntity getPrime( String prime )    
+    public ResponseEntity getPrime( @PathVariable String prime )    
     {
         try {
             return new ResponseEntity<>(primeService.getPrime(prime) ,HttpStatus.ACCEPTED);
