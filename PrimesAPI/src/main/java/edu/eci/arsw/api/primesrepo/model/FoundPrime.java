@@ -33,4 +33,9 @@ public class FoundPrime
     {
         this.prime = prime;
     }
+
+    @Override
+    public String toString() {
+        return "{" + "user:" + user + ", prime:" + prime + '}';
+    }
 }
