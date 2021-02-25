@@ -17,20 +17,23 @@ public class PrimeThread extends Thread {
     private BigInteger b;
     private PrimesResultSet prs;
     private MathUtilities mt;
-    public PrimeThread(Integer a, Integer b, PrimesResultSet prs,MathUtilities mt) {
-        this.a=a;
-        this.b=b;
+    private int itCount;
+    public PrimeThread(Integer a, Integer b, PrimesResultSet prs,MathUtilities mt,int itCount) {
+        this.a=new BigInteger(a.toString());
+        this.b=new BigInteger(b.toString());
         this.prs=prs;
         this.mt=mt;
+        this.itCount = itCount;
     }
     public void run(){
-        int itCount=0;
+        
             
         BigInteger i=a;
         while (i.compareTo(b)<=0){
             itCount++;
             if (mt.isPrime(i)){
                 prs.addPrime(i);
+                itCount++;
             }
             i=i.add(BigInteger.ONE);
         }

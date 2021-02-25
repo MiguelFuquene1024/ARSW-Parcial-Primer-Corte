@@ -14,7 +14,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class PrimesFinderTool {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		            
             int maxPrim=1000;
             
